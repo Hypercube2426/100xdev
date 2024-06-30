@@ -1,0 +1,33 @@
+<html>
+<script>
+async function populateDiv(){
+    const a = document.getElementById("principal").value;
+    const b = document.getElementById ("rate").value;
+    const c = document.getElementById ("interest").value;
+
+    const response = await fetch("https://sum-server.100xdevs.com/interest?principal=" +a+ "&rate=" +b+"&time="+c)
+    const ans = await response.text();
+    document.getElementById("final amount").innerHTML = ans;
+    
+}
+</script>    
+
+
+<body>
+
+    <input id="principal" type="text" placeholder="principal" > </input><br></br>
+    <input id="rate" type="text" placeholder="rate" > </input><br></br>
+    <input id="interest" type="text" placeholder="interest" > </input><br></br>
+
+
+    <button onclick="populateDiv()">Calculate amount</button> <br></br>
+
+    <div id="final amount"></div>
+
+
+</body>
+
+
+
+
+</html>
