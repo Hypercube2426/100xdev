@@ -1,0 +1,42 @@
+<html>
+<script>
+// async function populateDiv() {
+//         const a = document.getElementById("firstNumber").value;
+//         const b = document.getElementById ("secondNumber").value;
+//         const element = document.getElementById ("finalSum")
+//         const response = await fetch()
+//         // string = number
+//         // "1111" => 1111
+// }
+let timeout;
+function debouncepopulatediv(){
+        // delay the call to populate div untill ive not been called for 100ms
+        clearTimeout(timeout)
+        timeout = setTimeout(function()
+        {populateDiv()}
+            ,1000);
+        }
+        
+function populateDiv(){
+const a = document.getElementById("firstNumber").value;
+const b = document.getElementById ("secondNumber").value;
+fetch("https://sum-server.100xdevs.com/sum?a="+a + "&b=" + b )
+        .then(function(response){
+                response.text()
+                        .then(function(ans){
+                                document.getElementById("finalSum").innerHTML = ans;
+                        })
+        });
+
+} 
+</script>
+<body>
+
+<input oninput="debouncepopulatediv()" id="firstNumber" type="text" placeholder="First number"></input> <br></br>
+
+<input oninput="debouncepopulatediv()" id="secondNumber" type="text" placeholder="Second number"></input> <br></br>
+
+<!-- //removed calculate sum button -->
+<div id="finalSum"></div>
+</body> 
+</html>
