@@ -11,8 +11,11 @@
 
         //templating
         //but html will get overwridden
+        const originalHtml = document.getElementById("container").innerHTML;
+
+        const outerDiv = document.createElement("div"); //div
         
-        document.getElementById("container").innerHTML = `
+        document.getElementById("container").innerHTML = originalHtml+`
                 <div>${title}</div>
                 <div>${description}</div>
                 <button>mark as done</button>
